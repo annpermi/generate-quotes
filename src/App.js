@@ -28,15 +28,28 @@ class App extends Component {
 
   render(){
     const { data, current, text, author } = this.state;
-    console.log(data[current])
+    const content = data.map((item) => {
+      if (
+        item.text ==
+        "Genius is one percent inspiration and ninety-nine percent perspiration."
+      ) {
+        return (
+          <>
+            <h1 id="text">{item.text}</h1>
+            <h2 id="by">{item.author}</h2>
+          </>
+        );
+      }
+    });
     return (
       <div className="wrapper">
           <div className="box">
               <div className="inner-box">
                   <i className="fas fa-quote-left"></i>
                   <div className="quote">
-                    <h1 id="text">{current ? data[current].text : text}</h1>
-                    <h2 id="by">{current ? data[current].author : author}</h2>
+                    {content }
+                    {/* <h1 id="text">{current ? data[current].text : text}</h1>
+                    <h2 id="by">{current ? data[current].author : author}</h2> */}
                   </div>
                   <div className="twitter">
                       <button id="next" onClick={this.changeQuote}>Next quote</button>
